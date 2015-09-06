@@ -24,8 +24,7 @@
     </appender>  
     <logger name="com.xunlei.channel" level="INFO"/>
     <root level="ERROR">
-        <!--<appender-ref ref="console"/>-->
-          <!-- -->
+        <appender-ref ref="console"/>
         <appender-ref ref="file"/>
        
     </root>

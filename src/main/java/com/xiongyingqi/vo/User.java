@@ -9,6 +9,7 @@ import com.xiongyingqi.util.EntityHelper;
 public class User extends EntityHelper implements BasePojo{
     private Integer userId;
     private String userName;
+    private Integer age;
 
     public Integer getUserId() {
         return userId;
@@ -26,11 +27,21 @@ public class User extends EntityHelper implements BasePojo{
         this.userName = userName;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (!(o instanceof User))
+            return false;
+        if (!super.equals(o))
             return false;
 
         User user = (User) o;
@@ -39,14 +50,16 @@ public class User extends EntityHelper implements BasePojo{
             return false;
         if (userName != null ? !userName.equals(user.userName) : user.userName != null)
             return false;
+        return !(age != null ? !age.equals(user.age) : user.age != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
         return result;
     }
 }
